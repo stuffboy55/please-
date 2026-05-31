@@ -1,15 +1,11 @@
-cat > .upsun/config.yaml << 'EOF'
 applications:
   app:
-    type: 'nodejs:20'
-    source:
-      root: '/'
+    type: nodejs:20
 
 routes:
-  'https://{default}/':
+  https://{default}/:
     type: proxy
-    upstream: 'http://178.62.247.103:80'
-  'http://{default}/':
+    to: http://178.62.247.103:80
+  http://{default}/:
     type: redirect
-    to: 'https://{default}/'
-EOF
+    to: https://{default}/
