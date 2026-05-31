@@ -1,3 +1,10 @@
+cat > .upsun/config.yaml << 'EOF'
+applications:
+    proxy-only:
+        type: "nodejs:20"
+        build:
+            flavor: none
+
 routes:
     "https://{default}/":
         type: proxy
@@ -5,3 +12,4 @@ routes:
     "http://{default}/":
         type: redirect
         to: "https://{default}/"
+EOF
