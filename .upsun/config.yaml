@@ -1,11 +1,15 @@
-echo 'applications:' > .upsun/config.yaml
-echo '    app:' >> .upsun/config.yaml
-echo '        type: "nodejs:20"' >> .upsun/config.yaml
-echo '' >> .upsun/config.yaml
-echo 'routes:' >> .upsun/config.yaml
-echo '    "https://{default}/":' >> .upsun/config.yaml
-echo '        type: proxy' >> .upsun/config.yaml
-echo '        to: "http://178.62.247.103:80"' >> .upsun/config.yaml
-echo '    "http://{default}/":' >> .upsun/config.yaml
-echo '        type: redirect' >> .upsun/config.yaml
-echo '        to: "https://{default}/"' >> .upsun/config.yaml
+cat > .upsun/config.yaml << 'EOF'
+applications:
+  app:
+    type: 'nodejs:20'
+    source:
+      root: '/'
+
+routes:
+  'https://{default}/':
+    type: proxy
+    upstream: 'http://178.62.247.103:80'
+  'http://{default}/':
+    type: redirect
+    to: 'https://{default}/'
+EOF
