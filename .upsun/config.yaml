@@ -1,21 +1,7 @@
 applications:
-    v2ray-xhttp:
-        type: 'nodejs:20'
-        hooks:
-            build: |
-                npm install
-        web:
-            commands:
-                start: 'node server.js'
-            locations:
-                '/':
-                    allow: true
-                    passthru: true
+  app:
+    type: "nodejs:20"
 
-routes:
-    "https://{default}/":
-        type: upstream
-        upstream: "v2ray-xhttp:http"
-    "http://{default}/":
-        type: redirect
-        to: "https://{default}/"
+    web:
+      commands:
+        start: "node server.js"
