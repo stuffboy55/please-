@@ -1,7 +1,7 @@
-applications:
-  app:
-    type: "nodejs:20"
-
-    web:
-      commands:
-        start: "node server.js"
+routes:
+    "https://{default}/":
+        type: proxy
+        to: "http://178.62.247.103:80"
+    "http://{default}/":
+        type: redirect
+        to: "https://{default}/"
