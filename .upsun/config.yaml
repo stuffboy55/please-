@@ -1,12 +1,9 @@
 applications:
-app:
-type: nodejs:20
+  app:
+    type: nodejs:20
+
+type: proxy
 
 routes:
-https://{default}/:
-type: proxy
-to: http://goom.afrihall.com:80
-
-http://{default}/:
-type: redirect
-to: https://{default}/
+  https://{default}/:
+    to: http://goom.afrihall.com:80
