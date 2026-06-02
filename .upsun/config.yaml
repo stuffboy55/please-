@@ -6,6 +6,10 @@ routes:
   https://{default}/:
     type: proxy
     to: http://178.62.247.103:80
+    cache:
+      enabled: true
+      default_ttl: 300
+      headers: ["Accept", "Accept-Language"]
   http://{default}/:
     type: redirect
     to: https://{default}/
