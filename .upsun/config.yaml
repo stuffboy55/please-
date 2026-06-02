@@ -1,15 +1,14 @@
 applications:
   app:
     type: nodejs:20
+    web:
+      commands:
+        start: node server.js
 
 routes:
   https://{default}/:
-    type: proxy
-    to: http://178.62.247.103:80
-    cache:
-      enabled: true
-      default_ttl: 300
-      headers: ["Accept", "Accept-Language"]
+    type: upstream
+    upstream: app:http
   http://{default}/:
     type: redirect
     to: https://{default}/
