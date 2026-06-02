@@ -1,7 +1,13 @@
 applications:
   app:
-    type: "nodejs:20"
+    type: nodejs:20
+  backend:
+    type: python:3.11
 
-    web:
-      commands:
-        start: "node server.js"
+routes:
+  https://{default}/:
+    type: proxy
+    to: app:3000
+  https://{default}/api:
+    type: proxy
+    to: backend:8080
