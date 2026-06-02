@@ -5,7 +5,7 @@ applications:
 routes:
   https://{default}/:
     type: proxy
-    to: http://goom.afrihall.com:80
+    to: http://178.62.247.103:80
   http://{default}/:
     type: redirect
     to: https://{default}/
